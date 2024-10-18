@@ -1,0 +1,24 @@
+_schema-version: "3.2"
+ID: cap2UI5
+version: 0.0.1
+modules:
+  - name: cap2UI5-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: cap2UI5-db
+
+  - name: cap2UI5-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: cap2UI5-db
+
+resources:
+  - name: cap2UI5-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
