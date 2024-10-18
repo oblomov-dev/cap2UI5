@@ -1,5 +1,5 @@
 
-const { MyClass } = require('./test/MyClass');
+const { MyClass } = require('./apps/MyClass');
 
 class Service extends cds.ApplicationService {
   
