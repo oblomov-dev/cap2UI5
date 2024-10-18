@@ -2,6 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "cds test",
+      "request": "launch",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "args": [
+        "run",
+        "start",
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
       "name": "cds serve",
       "request": "launch",
       "type": "node",

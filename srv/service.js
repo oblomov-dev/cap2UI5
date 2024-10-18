@@ -1,5 +1,5 @@
 
-const { MyClass } = require('./apps/MyClass');
+const { z2ui5_cl_app_hello_world } = require('./z2ui5/z2ui5_cl_app_hello_world');
 
 class Service extends cds.ApplicationService {
   
@@ -7,8 +7,8 @@ class Service extends cds.ApplicationService {
 
     this.on('z2ui5', (req) => {
 
-      const myInstance = new MyClass('World');
-      console.log(myInstance.greet()); // Ausgabe: 
+      const myInstance = new z2ui5_cl_app_hello_world();
+      console.log(myInstance.main()); // Ausgabe: 
 
       let response = {
    "S_FRONT": {
