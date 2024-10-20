@@ -9,6 +9,7 @@ class z2ui5_cl_app_hello_world {
     }
 
     main() {
+        return;
         this.client.view.factory()
             .shell()
             .page('abap2UI5 - Hello World')

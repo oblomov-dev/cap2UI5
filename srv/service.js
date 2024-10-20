@@ -1,15 +1,22 @@
 // service.js
 
-const { z2ui5_cl_app_hello_world } = require('./z2ui5/z2ui5_cl_app_hello_world');
+// const { z2ui5_cl_app_hello_world } = require('./z2ui5/z2ui5_cl_app_hello_world');
+
+import {initializeABAP} from "./abap2UI5/output/init.mjs";
+import {cl_express_icf_shim} from "./abap2UI5/output/cl_express_icf_shim.clas.mjs";
 
 class Service extends cds.ApplicationService {
   
   async init() {
 
-    this.on('z2ui5', (req) => {
+    this.on('z2ui5', async (req)  => {
 
-      const myInstance = new z2ui5_cl_app_hello_world();
-      console.log(myInstance.main()); // Ausgabe: 
+      await initializeABAP();
+      result = await cl_express_icf_shim.run({req, res, class: "ZCL_SICF"});
+      
+      return;
+    const myInstance = new z2ui5_cl_app_hello_world();
+   console.log(myInstance.main()); // Ausgabe: 
 
       let response = {
    "S_FRONT": {
@@ -35,7 +42,6 @@ class Service extends cds.ApplicationService {
       }
    }
 };
-
       return JSON.stringify( response );
   
     });
@@ -44,5 +50,4 @@ class Service extends cds.ApplicationService {
   }
 }
 
-
-module.exports = { Service };
+//module.exports = { Service };
